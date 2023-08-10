@@ -11,13 +11,17 @@ class BaseModel:
     def __init__(self, *args, **kwargs):
         """This Initialize this BaseModel.
         Arguments:
-            *arguments (any): Unused.
-            **kwargs (dict): Key/value pairs of attributes.
+            *arguments args (any): Unused.
+            **keyword arguments kwargs (dict): Key/value pairs of attributes.
         """
+        print(args)
+        for key, value in kwargs.items():
+            print(value)
         # tform = "%Y-%m-%dT%H:%M:%S.%f"
-        # self.id = str(uuid4())
-        # self.created_at = datetime.today()
-        # self.updated_at = datetime.today()
+        self.id = str(uuid4())
+        self.created_at = datetime.today()
+        self.updated_at = datetime.today()
+        
         # if len(kwargs) != 0:
             # for k, v in kwargs.items():
                 # if k == "created_at" or k == "updated_at":
