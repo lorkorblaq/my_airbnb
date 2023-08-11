@@ -18,15 +18,37 @@ class BaseModel:
         self.id = str(uuid4())
         self.created_at = datetime.today()
         self.updated_at = datetime.today()
+        # print(self.id)
+
+    def __str__(self):
+        class_name = self.__class__.__name__
+        return f"This class_name is {class_name}, \nIts id {self.id}, and it conatins these:\n {self.__dict__}"
+
+    def save():
+        pass
+    def to_dict():
+        diction = self.__dict__
+        
+        pass
+
+
 
         if len(kwargs) != 0:
             for k, v in kwargs.items():
                 if k == "created_at" or k == "updated_at":
                     self.__dict__[k] = datetime.strptime(v, tform)
+                    print(self.__dict__[k])
                 else:
                     self.__dict__[k] = v
         else:
-             models.storage.new(self)
+            pass
+            #models.storage.new(self)
+b = BaseModel()
+
+
+
+
+
 
     # def save(self):
         # """Update updated_at with the current datetime."""
@@ -48,7 +70,3 @@ class BaseModel:
         # """Return the print/str representation of the BaseModel instance."""
         # clname = self.__class__.__name__
         # return "[{}] ({}) {}".format(clname, self.id, self.__dict__)
-    def __str__(self):
-        """Return the print/str representation of the BaseModel instance"""
-        class_name = self.__class__.__name
-BaseModel()
