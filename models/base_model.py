@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Defines the BaseModel class."""
-#import models
+# import models
+from engine.file_storage import save
 from uuid import uuid4
 from datetime import datetime
 
@@ -16,34 +17,43 @@ class BaseModel:
         """
         tform = "%Y-%m-%dT%H:%M:%S.%f"
         self.id = str(uuid4())
-        self.created_at = datetime.today()
-        self.updated_at = datetime.today()
+        self.name = ''
+        self.my_number = 0
+        self.created_at = datetime.today().isoformat()
+        self.updated_at = datetime.today().isoformat()
         # print(self.id)
 
     def __str__(self):
         class_name = self.__class__.__name__
-        return f"This class_name is {class_name}, \nIts id {self.id}, and it conatins these:\n {self.__dict__}"
+        return f"This class_name is {class_name}, \nIts id: {self.id}, and it conatins these:\n {self.__dict__}"
 
-    def save():
-        pass
+    #def save():
+     #   pass
+
+
     def to_dict():
         diction = self.__dict__
-        
         pass
 
-
-
-        if len(kwargs) != 0:
-            for k, v in kwargs.items():
-                if k == "created_at" or k == "updated_at":
-                    self.__dict__[k] = datetime.strptime(v, tform)
-                    print(self.__dict__[k])
-                else:
-                    self.__dict__[k] = v
-        else:
-            pass
-            #models.storage.new(self)
+        # if len(kwargs) != 0:
+            # for k, v in kwargs.items():
+                # if k == "created_at" or k == "updated_at":
+                    # self.__dict__[k] = datetime.strptime(v, tform)
+                    # print(self.__dict__[k])
+                # else:
+                    # self.__dict__[k] = v
+        # else:
+            # pass
+            # models.storage.new(self)
 b = BaseModel()
+b = BaseModel(save)
+b.name = "My First Model"
+b.my_number = 89
+print(b)
+b.save()
+print(b)
+my_model_json = b.to_dict()
+print(my_model_json)
 
 
 

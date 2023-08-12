@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """This model is the Amenity class for the 
 hbnb which holds the amenity objects"""
-from models.base_model import BaseModel
+from base_model import BaseModel
 
 
 class Amenity(BaseModel):
