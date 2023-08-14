@@ -1,6 +1,8 @@
-#!/usr/bin/python3
+
 """Defines the BaseModel class."""
-# import models
+# from models import *
+import sys
+sys.path.append("my_airbnb")
 from engine.file_storage import save
 from uuid import uuid4
 from datetime import datetime
@@ -15,12 +17,17 @@ class BaseModel:
             *arguments args (any): Unused.
             **keyword arguments kwargs (dict): Key/value pairs of attributes.
         """
-        tform = "%Y-%m-%dT%H:%M:%S.%f"
+        timeform = "%Y-%m-%dT%H:%M:%S.%f"
         self.id = str(uuid4())
         self.name = ''
         self.my_number = 0
         self.created_at = datetime.today().isoformat()
         self.updated_at = datetime.today().isoformat()
+        if len(kwargs) != 0:
+            for k,v in kwargs.items():
+                if k == 'created_at' or k == 'updated_at':
+                    self.__dict__[k] =datetime.strtime(v,timeform)
+            
         # print(self.id)
 
     def __str__(self):
