@@ -3,7 +3,7 @@
 # from models import *
 import sys
 sys.path.append("my_airbnb")
-from engine.file_storage import save
+# from engine.file_storage import save
 from uuid import uuid4
 from datetime import datetime
 
@@ -19,7 +19,7 @@ class BaseModel:
         """
         timeform = "%Y-%m-%dT%H:%M:%S.%f"
         self.id = str(uuid4())
-        self.name = ''
+        self.name = 'femi'
         self.my_number = 0
         self.created_at = datetime.today().isoformat()
         self.updated_at = datetime.today().isoformat()
@@ -29,7 +29,6 @@ class BaseModel:
                     self.__dict__[k] =datetime.strtime(v,timeform)
             
         # print(self.id)
-
     def __str__(self):
         class_name = self.__class__.__name__
         return f"This class_name is {class_name}, \nIts id: {self.id}, and it conatins these:\n {self.__dict__}"
@@ -53,14 +52,10 @@ class BaseModel:
             # pass
             # models.storage.new(self)
 b = BaseModel()
-b = BaseModel(save)
-b.name = "My First Model"
+b.name = "Perpe"
 b.my_number = 89
 print(b)
-b.save()
-print(b)
-my_model_json = b.to_dict()
-print(my_model_json)
+
 
 
 

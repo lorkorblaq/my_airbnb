@@ -9,11 +9,10 @@ import os
 # from models.place import Place
 # from models.amenity import Amenity
 # from models.review import Review
-
 class FileStorage:
     __file_path = "file.json"
-    __objects = {}
-
+    __objects = {key:value}
+    __objects.values
     def all(self):
         return FileStorage.__objects
     def new(self, obj):
@@ -26,11 +25,8 @@ class FileStorage:
         """Serialize __objects to the JSON file __file_path."""
         obj_dict = FileStorage.__objects
         d = {k:v.to_dict for k, v in obj_dict.items()}
-        with open(FileStorage.__file_path, 'a') as f:
+        with open(FileStorage.__file_path, 'a') as file:
             json.dump(d, f)
-    
-
-    
     
     def reload(self):
         # """Deserialize the JSON file __file_path to __objects, if it exists."""
